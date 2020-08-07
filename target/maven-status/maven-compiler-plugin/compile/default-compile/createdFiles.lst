@@ -1,0 +1,4 @@
+dao/impl/JdbcTemplateAdapter.class
+dao/IDao.class
+dao/IDaoAdapter.class
+dao/impl/BaseDao.class
