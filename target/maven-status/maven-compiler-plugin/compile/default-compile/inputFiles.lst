@@ -1,4 +1,13 @@
 /Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/IDaoAdapter.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/myJdbcFactory/ConnectionFactory.java
 /Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/impl/BaseDao.java
 /Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/impl/JdbcTemplateAdapter.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/Annotatons/Table.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/AbstractNewDao.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/myJdbcFactory/GetDbProperties.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/test/java/PeopleUser.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/test/java/MyDao.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/test/java/MyMain.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/myJdbcFactory/DataSourceHolder.java
+/Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/myJdbcFactory/DBClose.java
 /Users/zhangjiesong/myProject/zjs_library/src/main/java/dao/IDao.java

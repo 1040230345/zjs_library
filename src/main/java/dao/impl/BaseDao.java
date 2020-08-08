@@ -19,22 +19,22 @@ public abstract class BaseDao<T> implements IDao<T> {
      * 统计总条数
      * @return
      */
-    public int count() {
+    public Long count() {
         //获取传进来的对象
         tClass = getTClass();
         String sql = " select count(*) from " +getTableName(tClass);
-
-        System.out.println(sql);
-        return 0;
+        return handleQueryForObject(sql,Long.class,null);
     }
 
     /**
      * 从注解中获取表名
      */
     private String getTableName(Class<T> tClass){
+        //获取注解
         Table table = tClass.getAnnotation(Table.class);
         if(table==null){
-            throw new RuntimeException("该实体类必须包含表名才能使用该方法  tClazz=" + tClass.getName());
+            return getClassName(tClass);
+//            throw new RuntimeException("该实体类必须包含表名才能使用该方法  tClazz=" + tClass.getName());
         }
         return table.name();
     }
@@ -47,5 +47,35 @@ public abstract class BaseDao<T> implements IDao<T> {
             return tClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         }
         return tClass;
+    }
+
+    /**
+     * 获取类名并进行转化
+     */
+    private String getClassName(Class<T> tClass){
+        char[] nameC =  tClass.getSimpleName().toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < nameC.length; i++) {
+            if((int)nameC[i]>=65&&(int)nameC[i]<97){
+                nameC[i] = (char) ((char) 97+((int)nameC[i]-65));
+                if(i!=0)
+                    sb.append("_"+nameC[i]);
+                else sb.append(nameC[i]);
+            }else
+                sb.append(nameC[i]);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 执行一条sql语句
+     * @param sql
+     * @param requiredType
+     * @param args
+     * @param <T>
+     * @return
+     */
+    public <T> T handleQueryForObject(String sql, Class<T> requiredType, Object... args){
+        return getAdapter().queryForObject(sql,requiredType,args);
     }
 }

@@ -1,4 +1,11 @@
 dao/impl/JdbcTemplateAdapter.class
+dao/myJdbcFactory/DataSourceHolder.class
 dao/IDao.class
-dao/IDaoAdapter.class
+dao/myJdbcFactory/GetDbProperties.class
+dao/AbstractNewDao.class
+dao/AbstractNewDao$1.class
+dao/myJdbcFactory/ConnectionFactory.class
+dao/myJdbcFactory/DBClose.class
 dao/impl/BaseDao.class
+dao/IDaoAdapter.class
+Annotatons/Table.class

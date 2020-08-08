@@ -23,11 +23,16 @@ public interface IDao<T> {
      * 统计总数
      * @return
      */
-    int count();
+    Long count();
 
     /**
      * 获取适配器
      * 这个由子类提供
      */
     public IDaoAdapter getAdapter();
+
+
+
+
+
 }
