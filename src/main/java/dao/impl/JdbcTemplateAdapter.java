@@ -2,10 +2,8 @@ package dao.impl;
 
 import dao.IDaoAdapter;
 import dao.myJdbcFactory.DBClose;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 
 /**
  * 适配器实现类
@@ -17,11 +15,18 @@ public abstract class JdbcTemplateAdapter implements IDaoAdapter {
      */
     public <K> K queryForObject(String sql, Class<K> requiredType, Object... args){
         Connection conn = getConnection();//获取数据库连接
-        Statement stmt = null;
+        PreparedStatement ps = null;
         try {
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs = stmt.executeQuery(sql);
+//            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+//                    ResultSet.CONCUR_UPDATABLE);
+            ps = conn.prepareStatement(sql);
+
+            if(args!=null&&args.length>0){
+                for (int i = 0; i < args.length; i++) {
+                    ps.setObject(i+1,args[i]);
+                }
+            }
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 return (K) rs.getObject(1);
             }

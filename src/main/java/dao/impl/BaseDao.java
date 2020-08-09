@@ -27,6 +27,16 @@ public abstract class BaseDao<T> implements IDao<T> {
     }
 
     /**
+     * 按条件统计条数
+     */
+    public Long count(String conditions,Object... args){
+        //获取传进来的对象
+        tClass = getTClass();
+        String sql = " select count(*) from " +getTableName(tClass)+" where "+conditions;
+        return handleQueryForObject(sql,Long.class,args);
+    }
+
+    /**
      * 从注解中获取表名
      */
     private String getTableName(Class<T> tClass){

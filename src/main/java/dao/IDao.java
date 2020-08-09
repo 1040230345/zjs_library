@@ -26,6 +26,11 @@ public interface IDao<T> {
     Long count();
 
     /**
+     * 按条件统计总数
+     */
+    Long count(String conditions,Object... args);
+
+    /**
      * 获取适配器
      * 这个由子类提供
      */
