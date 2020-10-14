@@ -1,6 +1,6 @@
 package dao.impl;
 
-import Annotatons.Table;
+import Annotatons.dao.Table;
 import dao.IDao;
 
 import java.lang.reflect.ParameterizedType;
